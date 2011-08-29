@@ -1,0 +1,172 @@
+<!doctype>
+<html>
+<head>
+<title>History API demo</title>
+<meta charset="utf-8">
+<style>
+body {
+  background-image: -moz-linear-gradient(#fff, #9e9);
+  background-image: -ms-linear-gradient(#fff, #9e9);
+  background-image: -o-linear-gradient(#fff, #9e9);
+  background-image: -webkit-linear-gradient(#fff, #9e9);
+  background-image: linear-gradient(#fff, #9e9);
+  height: 100%;
+  margin: 0;
+  min-height: 100%;
+}
+#main {
+	height: 100%;
+	width: 100%;
+}
+#blockimg, #canvas {
+	display: none;
+}
+#visible-canvas {
+  background: #fff;
+  box-shadow: 0px 0px 10px #060;
+  display: block;
+  height: 100%;
+  margin: 0 auto;
+}
+#gameover, #pausescene {
+  color: #060;
+  font-family: Arial;
+  font-size: 80px;
+  font-weight: bold;
+  left: 0;
+  margin-top: -40px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 0 1px #060;
+  text-transform: uppercase;
+  top: 50%;
+  width: 100%;
+}
+#about {
+  -moz-border-radius: 30px;
+  -moz-transition-duration: .3s;
+  -moz-transition-property: opacity, color, text-shadow;
+  -ms-transition-duration: .3s;
+  -ms-transition-property: opacity, color, text-shadow;
+  -o-transition-duration: .3s;
+  -o-transition-property: opacity, color, text-shadow;
+  -webkit-border-radius: 30px;
+  -webkit-transition-duration: .3s;
+  -webkit-transition-property: opacity, color, text-shadow;
+  background: #000;
+  border-radius: 30px;
+  bottom: 0;
+  box-shadow: 0 0 2px #000;
+  color: #9e9;
+  font: bold 50px Helvetica, Arial, sans serif;
+  height: 60px;
+  margin: 30px;
+  opacity: .25;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-shadow: 0 0 2px #9e9;
+  transition-duration: .3s;
+  transition-property: opacity, color, text-shadow;
+  width: 60px;
+  z-index: 1;
+}
+#about:hover {
+  opacity: .9;
+}
+#about:hover #popin {
+  opacity: 1;
+  visibility: visible;
+}
+#popin {
+  -moz-transition-duration: .5s;
+  -moz-transition-property: opacity, visible;
+  -ms-transition-duration: .5s;
+  -ms-transition-property: opacity, visible;
+  -o-transition-duration: .5s;
+  -o-transition-property: opacity, visible;
+  -webkit-transition-duration: .5s;
+  -webkit-transition-property: opacity, visible;
+  bottom: 0;
+  font: normal 13px Arial, sans serif;
+  margin: 0 0 85px;
+  opacity: 0;
+  padding: 5px 15px;
+  position: absolute;
+  right: 0;
+  text-align: left;
+  text-shadow: 1px 1px 0 #fff;
+  transition-duration: .5s;
+  transition-property: opacity, visible;
+  visibility: hidden;
+  width: 500px;
+}
+#popin:after {
+  border-color: #ccc transparent;
+  border-style: solid;
+  border-width: 15px 15px 0;
+  bottom: -15px;
+  content: "";
+  display: block;
+  position: absolute;
+  right: 15px;
+  width: 0;
+}s
+.box {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background: #ddd;
+  background: -moz-linear-gradient(#fff, #ccc);
+  background: -ms-linear-gradient(#fff, #ccc);
+  background: -o-linear-gradient(#fff, #ccc);
+  background: -webkit-linear-gradient(#fff, #ccc);
+  background: linear-gradient(#fff, #ccc);
+  border-radius: 10px;
+  color: #333;
+  opacity: .9;
+}
+</style>
+<script src="js/closure-library/closure/goog/base.js"></script>
+<script src="js/deps.js"></script>
+<script src="js/Board.js"></script>
+<script src="js/Piece.js"></script>
+<script src="js/main.js"></script>
+</head>
+<body alt="Instructions: 
+↑ = Rotation, 
+← = Move left, 
+→ = Move right, 
+↓ = Move down, 
+Space = Fall, 
+P = Pause, 
+R = Restart" title="Instructions: 
+↑ = Rotation, 
+← = Move left, 
+→ = Move right, 
+↓ = Move down, 
+Space = Fall, 
+P = Pause, 
+R = Restart">
+<div id=main>
+<img id=blockimg src="img/blocks.png" width=140 height=20>
+<canvas id=canvas height=440 width=200></canvas>
+<canvas id=visible-canvas height=400 width=200></canvas>
+</div>
+<div id=gameover></div>
+<div id=pausescene></div>
+<!--No time for i18n this time, English only :-(-->
+<div id=about>?
+<div id=popin class=box><p>This demo is my submission to the Mozilla Dev Derby of August 2011.<br>
+This is basically a Tetris integrated into the browser UI. The next piece shape is listed in the URL bar, your score in the tab title and hover the page to display instructions (yeah, I know, this one in annoying...).<br>
+Enter a harder mode by pressing F11 ;-)</p>
+<p>The code is available at <a href="https://github.com/gmarty/Mozilla-Dev-Derby-2011-08">https://github.com/gmarty/Mozilla-Dev-Derby-2011-08</a>.</p>
+<p>This demo is built using several open source projects:</p>
+<ul>
+<li><a href="https://github.com/Rayomnd/tetrisgame">Tetris game</a> by Daihua Ye</li>
+<li><a href="http://code.google.com/closure/library/">Closure Library</a></li>
+</ul>
+<p>Follow me on Twitter: <a href="https://twitter.com/g_marty">@g_marty</a>.</p>
+</div></div>
+<script>tetris.restartgame()</script>
+</body>
+</html>
