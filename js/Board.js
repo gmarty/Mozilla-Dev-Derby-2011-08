@@ -18,7 +18,8 @@ tetris.Board.WIDTH = 10;
  */
 tetris.Board.HEIGHT = 22; // add
 
-var pathPrefix = new goog.Uri(document.location.href).getPath();
+//var pathPrefix = new goog.Uri(document.location.href).getPath();
+var pathPrefix = '/';
 
 if (goog.history.Html5History.isSupported()) {
   tetris.Board.history = new goog.history.Html5History();
